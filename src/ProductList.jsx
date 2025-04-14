@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ProductList.css'
 import CartItem from './CartItem';
-import addItem from './CartSlice'
+import addItem from './CartSlice';
 
 function ProductList({ onHomeClick }) {
     const [showCart, setShowCart] = useState(false);
@@ -285,22 +285,22 @@ function ProductList({ onHomeClick }) {
             </div>
             {!showCart ? (
                 <div className="product-grid">
-                    {plantsArray.map((plants, i) => {
+                    {plantsArray.map((plants, i) => (
                         <div key={i}>
                             <h1>{plants.category}</h1>
                             <div className='product-list'>
-                                {plants.plants.map((item, j) => {
+                                {plants.plants.map((item, j) => (
                                     <div key={j} className='product-card'>
+                                        <img src={item.image} alt={item.name} className='product-image' />
                                         <h3 className='product-title'>Name: {item.name} </h3>
                                         <p>Description: {item.description} </p>
                                         <p>Cost: {item.cost} </p>
-                                        <img src={item.image} alt={item.name} className='product-image' />
                                         <button className='product-button' onClick={() => handleAddToCart(item)}>Add to Cart</button>
                                     </div>
-                                })}
+                                ))}
                             </div>
                         </div>
-                    })}
+                    ))}
                 </div>
             ) : (
                 <CartItem onContinueShopping={handleContinueShopping} />
