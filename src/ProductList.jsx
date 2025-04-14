@@ -262,7 +262,7 @@ function ProductList({ onHomeClick }) {
         dispatch(addItem(plant))
         setAddedToCart((prevState) => ({
             ...prevState,
-            [product.name]: true,
+            [plant.name]: true,
         }))
     }
     return (
@@ -297,7 +297,10 @@ function ProductList({ onHomeClick }) {
                                         <h3 className='product-title'>Name: {item.name} </h3>
                                         <p>Description: {item.description} </p>
                                         <p>Cost: {item.cost} </p>
-                                        <button className='product-button' onClick={() => handleAddToCart(item)}>Add to Cart</button>
+                                        <button className={`product-button ${addedToCart[item.name] ? 'added-to-cart' : ''}`}
+                                        onClick={() => handleAddToCart(item)}>
+                                        {addedToCart[item.name] ? 'Added to Cart' : 'Add to Cart'}
+                                        </button>
                                     </div>
                                 ))}
                             </div>
