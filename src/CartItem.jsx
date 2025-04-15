@@ -37,6 +37,20 @@ const CartItem = ({ onContinueShopping, onRemoveFromCartList }) => {
     return (parseFloat(item.cost.replace('$', '')) * item.quantity).toFixed(2);
   };
 
+  const handleCheckoutShopping = (e) => {
+    const total = calculateTotalAmount();
+    console.log(`Total amount: $${total}`);
+    console.log('Thank you for shopping with us');
+
+    cart.forEach((item) => {
+        dispatch(removeItem(item.name));
+    });
+
+    alert(`Thank you for your order! Your total was $${total}.`);
+  };
+  
+  
+
   return (
     <div className="cart-container">
       <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
@@ -62,7 +76,7 @@ const CartItem = ({ onContinueShopping, onRemoveFromCartList }) => {
       <div className="continue_shopping_btn">
         <button className="get-started-button" onClick={(e) => handleContinueShopping(e)}>Continue Shopping</button>
         <br />
-        <button className="get-started-button1">Checkout</button>
+        <button className="get-started-button1" onClick={(e) => handleCheckoutShopping(e)}>Checkout</button>
       </div>
     </div>
   );
